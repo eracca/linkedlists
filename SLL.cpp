@@ -76,6 +76,7 @@ void SLL::addAtK(int x, int k){
 		size++;
 	}
 }
+
 void SLL::join(SLL *list2){ //3 pts
 //join the list with list2, making the current list one longer list
     last->next = list2.first;
@@ -114,8 +115,12 @@ SNode *SLL::findKth(int k) { //4 pts
         return first;
     }
     else{
+        SNode* tmp = first;
         for (int i=0; i<k; i++)
+            tmp=tmp->next; 
+    }
 }
+
 int SLL::findK(int k) {
 	SNode *tmp = first;
 	int ind = 0;
@@ -132,7 +137,14 @@ int SLL::findK(int k) {
 }
 int SLL::remFirst() { //3 pts
 //remove the first node from the list, returning its data
+    SNode *tmp = first;
+    first = first->next; 
+    size--;
+    int x = tmp->data; 
+    delete tmp; 
+    return x; 
 }
+
 int SLL::remKth(int k) {
 	if (k < size && k > 0) {
 		SNode *tmp = first;
@@ -145,9 +157,18 @@ int SLL::remKth(int k) {
 		delete tmp2;
 		return x;
 	}
+}
+
 void SLL::reverseList(){ //10 pts
 //Reverses the list, after completed, the last should be the first
 //in the list and the first should be the last
 //Challenge - I did this with one pass across the list
+    SNode* tmp = first; 
+    for (int i=0;  i<size; i++){
+        tmp = tmp->next; 
+        last->next = first; 
+        last->next = NULL;
+        first = tmp; 
+    }
 }
 
