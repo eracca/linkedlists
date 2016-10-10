@@ -38,7 +38,7 @@ void SLL::printSLL() {
 
 void SLL::addFirst(int x) { // 3 pts
 //make a new list of only one node, data is x
-    SNode *n=new Snode(x);
+    SNode *n=new SNode(x);
     first = n;
     last = n; 
     size=1;   
@@ -46,7 +46,7 @@ void SLL::addFirst(int x) { // 3 pts
 
 void SLL::addAtFront(int x) {  //3 pts
 //add a new node to the front of the list with data being x
-    SNode *n= new Snode(x); 
+    SNode *n= new SNode(x); 
     n->next=first; 
     first = n;  
     size++; 
@@ -54,7 +54,7 @@ void SLL::addAtFront(int x) {  //3 pts
 
 void SLL::push(int x) { //6 pts
 //add a new node to the end of the list, with data x
-    SNode *n = new Snode(x);
+    SNode *n = new SNode(x);
     last->next=n;
     last=n; 
     size++; 
@@ -64,7 +64,6 @@ void SLL::addAtK(int x, int k){
 	SNode *tmp = first;
 	if (k==0) {
 		addAtFront(x);
-		size++;
 	}
 	if (k < size  && k >= 0) {
 		for (int i = 0; i < k-1; i++) {

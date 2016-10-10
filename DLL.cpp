@@ -46,17 +46,42 @@ void DLL::printRevDLL() {
 
 void DLL::addFirst(int x) { //2 pts
 //add very first element to list
+    DNode *n = new DNode(x); 
+    first = n;
+    last = n; 
+    size = 1; 
 }
+
 void DLL::addAtFront(int x) { //2 pts
 //	add a new node to the beginning of the list
+    DNode *n = new DNode(x); 
+    n->next = first; 
+    first-> prev = n; 
+    first = n; 
+    size++;  
 }
 
 void DLL::push(int x) { //2 pts
 // add a new node to the end of the list
+    DNode *n = new DNode(x); 
+    n->prev = last; 
+    last->next = n; 
+    last = n; 
+    size+;  
 }
 
 void DLL::addAtK(int x, int k){ //4 pts
 //add at position k a new node with x as the data
+    DNode *tmp = first;
+    if (k==0){
+        addAtFront(x); 
+    }
+    if (k < size && k >= 0){
+        for (int i = 0; i< k-1; i++){
+            tmp =  tmp->next;
+        }
+        //NEEDS WORK
+
 }
 void DLL::join(DLL *list2){ //2 pts
 // join list 2 to the end of the list, modifying the size of the list
